@@ -17,6 +17,6 @@ jobs:
       run: echo Hello, world!
     
     - name: GitHub Action for Maven
-      uses: LucaFeger/action-maven-cli@1.1.0
+      uses: comchangs/action-maven@v0.4-beta
       with:
        args: clean install
