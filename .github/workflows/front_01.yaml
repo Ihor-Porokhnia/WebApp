@@ -1,4 +1,4 @@
-name: CIback
+name: CIfront
 
 on:
  push:
