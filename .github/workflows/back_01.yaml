@@ -16,6 +16,11 @@ jobs:
     - name: Run a one-line script
       run: echo Hello, world!
     
+    - name: Azure Login
+      uses: azure/login@v1
+      with:
+        creds: ${{ secrets.AZURE_CREDENTIALS }}
+
     - name: GitHub Action for Maven
       uses: comchangs/action-maven@v0.4-beta
       with:
@@ -33,3 +38,11 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
         dockerfile: Dockerfile2
         tags: ${{ env.RELEASE_VERSION }},latest
+   
+     - name: Azure CLI script
+       uses: azure/CLI@v1
+       with:
+         azcliversion: 2.0.72
+         inlineScript: |
+           az container show --resource-group containers --name example-continst
+             
