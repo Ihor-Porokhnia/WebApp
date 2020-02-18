@@ -44,5 +44,5 @@ jobs:
       with:
         azcliversion: 2.0.72
         inlineScript: |
-          az container show --resource-group containers --name example-continst
+          az container restart --resource-group containers --name example-continst
              
