@@ -23,7 +23,7 @@ jobs:
       run: echo ::set-env name=RELEASE_VERSION::$(echo ${GITHUB_REF:10})
     
     - name: curly
-      run: curl -s -X POST  https://api.telegram.org/bot${{ secrets.TELE_TOCKEN }}/sendMessage -d chat_id="${{ secrets.CHAT_ID }}" -d text="Build \#${GITHUB_REF:10} started"
+      run: curl -s -X POST  https://api.telegram.org/bot${{ secrets.TELE_TOCKEN }}/sendMessage -d chat_id="${{ secrets.CHAT_ID }}" -d text="Build №${GITHUB_REF:10} started"
 
     - name: base64-to-full
       id: write_fullchain
