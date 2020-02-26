@@ -13,4 +13,4 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: curly
-      run: curl -s -X POST  https://api.telegram.org/bot1124349745:AAE1DgdLFoLe2rffkPdxMxjRtVyMoP5AUH0/sendMessage -d chat_id="-393518449" -d text="json"
+      run: curl -s -X POST  https://api.telegram.org/bot${{ secrets.TELE_TOCKEN }}/sendMessage -d chat_id="-393518449" -d text="json"
