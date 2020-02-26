@@ -27,4 +27,8 @@ jobs:
 
     - name: cat file
       run: cat ${{ steps.write_privkey.outputs.filePath }}
+    
+    - name: pwd
+      run: pwd
+      
 
