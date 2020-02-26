@@ -21,6 +21,11 @@ jobs:
       with:
         creds: ${{ secrets.AZURE_CREDENTIALS }}
 
+
+    - name: tele notification 1
+      run: curl -s -X POST  https://api.telegram.org/bot${{ secrets.TELE_TOCKEN }}/sendMessage -d chat_id="${{ secrets.CHAT_ID }}" -d text="Build ${GITHUB_REF:10} started"
+
+
     - name: GitHub Action for Maven
       uses: comchangs/action-maven@v0.4-beta
       with:
@@ -38,6 +43,12 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
         dockerfile: Dockerfile
         tags: ${{ env.RELEASE_VERSION }},latest
+
+    - name: tele notification 2
+      run: curl -s -X POST  https://api.telegram.org/bot${{ secrets.TELE_TOCKEN }}/sendMessage -d chat_id="${{ secrets.CHAT_ID }}" -d text="Build ${GITHUB_REF:10} started"
+
+    - name: tele notification 3
+      run: curl -s -X POST  https://api.telegram.org/bot${{ secrets.TELE_TOCKEN }}/sendMessage -d chat_id="${{ secrets.CHAT_ID }}" -d text="Deploy ${GITHUB_REF:10} started"
    
     - name: Azure CLI script
       uses: azure/CLI@v1
@@ -46,3 +57,5 @@ jobs:
         inlineScript: |
           az container restart --resource-group containers --name example-continst
              
+    - name: tele notification 4
+      run: curl -s -X POST  https://api.telegram.org/bot${{ secrets.TELE_TOCKEN }}/sendMessage -d chat_id="${{ secrets.CHAT_ID }}" -d text="Deploy ${GITHUB_REF:10} done"
