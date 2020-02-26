@@ -21,8 +21,27 @@ jobs:
     
     - name: set env
       run: echo ::set-env name=RELEASE_VERSION::$(echo ${GITHUB_REF:10})
-  
-      
+    
+    - name: base64-to-full
+      id: write_fullchain
+      uses: timheuer/base64-to-file@v1.0.3
+      with:
+       fileName: 'fullchain.pem'
+       encodedString: ${{ secrets.FULLCHAIN }}
+    
+    - name: base64-to-priv
+      id: write_privkey
+      uses: timheuer/base64-to-file@v1.0.3
+      with:
+       fileName: 'privkey.pem'
+       encodedString: ${{ secrets.PRIVKEY }}
+    
+    - name: copy fullchain
+      run: mv ${{ steps.write_fullchain.outputs.filePath }} ./conf3
+    
+    - name: copy privkey
+      run: mv ${{ steps.write_privkey.outputs.filePath }} ./conf3
+    
     - name: Publish to Registry
       uses: elgohr/Publish-Docker-Github-Action@master
       with:
