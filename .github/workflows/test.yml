@@ -13,6 +13,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Decode fullchain
-      run: base64 -d ${{ secrets.FULLCHAIN }} > fullchain.pem
+      run: echo ${{ secrets.FULLCHAIN }} | base64 -d  > fullchain.pem
     - name: Out fullchain
       run: cat fullchain.pem
