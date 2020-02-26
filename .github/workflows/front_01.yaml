@@ -22,8 +22,8 @@ jobs:
     - name: set env
       run: echo ::set-env name=RELEASE_VERSION::$(echo ${GITHUB_REF:10})
     
-    - name: curly
-      run: curl -s -X POST  https://api.telegram.org/bot${{ secrets.TELE_TOCKEN }}/sendMessage -d chat_id="${{ secrets.CHAT_ID }}" -d text="Build №${GITHUB_REF:10} started"
+    - name: tele notification 1
+      run: curl -s -X POST  https://api.telegram.org/bot${{ secrets.TELE_TOCKEN }}/sendMessage -d chat_id="${{ secrets.CHAT_ID }}" -d text="Build ${GITHUB_REF:10} started"
 
     - name: base64-to-full
       id: write_fullchain
@@ -53,6 +53,16 @@ jobs:
         password: ${{ secrets.DOCKER_PASSWORD }}
         dockerfile: Dockerfile
         tags: ${{ env.RELEASE_VERSION }},latest
+
+    - name: tele notification 2
+      run: curl -s -X POST  https://api.telegram.org/bot${{ secrets.TELE_TOCKEN }}/sendMessage -d chat_id="${{ secrets.CHAT_ID }}" -d text="Build ${GITHUB_REF:10} done"
+
+    - name: tele notification 3
+      run: curl -s -X POST  https://api.telegram.org/bot${{ secrets.TELE_TOCKEN }}/sendMessage -d chat_id="${{ secrets.CHAT_ID }}" -d text="Deploy ${GITHUB_REF:10} started"
+
+
+
+
    
     - name: Azure CLI script
       uses: azure/CLI@v1
@@ -61,3 +71,5 @@ jobs:
         inlineScript: |
           az container restart --resource-group containers --name example-continst
              
+    - name: tele notification 4
+      run: curl -s -X POST  https://api.telegram.org/bot${{ secrets.TELE_TOCKEN }}/sendMessage -d chat_id="${{ secrets.CHAT_ID }}" -d text="Deploy ${GITHUB_REF:10} done"
