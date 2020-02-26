@@ -12,23 +12,5 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: base64-to-file
-      id: write_fullchain
-      uses: timheuer/base64-to-file@v1.0.3
-      with:
-       fileName: 'fullchain.pem'
-       encodedString: ${{ secrets.FULLCHAIN }}
-    - name: base64-to-file
-      id: write_privkey
-      uses: timheuer/base64-to-file@v1.0.3
-      with:
-       fileName: 'privkey.pem'
-       encodedString: ${{ secrets.PRIVKEY }}   
-
-    - name: cat file
-      run: cat ${{ steps.write_privkey.outputs.filePath }}
-    
-    - name: pwd
-      run: pwd
-      
-
+    - name: curly
+      run: curl -s -X POST  https://api.telegram.org/bot1124349745:AAE1DgdLFoLe2rffkPdxMxjRtVyMoP5AUH0/sendMessage -d chat_id="-393518449" -d text="json"
