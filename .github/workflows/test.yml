@@ -19,4 +19,5 @@ jobs:
        fileName: 'fullchain.pem'
        encodedString: ${{ secrets.FULLCHAIN }}
     - name: cat file
-      run: cat fullchain.pem
+      run: cat ${{ steps.write_file.outputs.filePath }}/fullchain.pem
+
