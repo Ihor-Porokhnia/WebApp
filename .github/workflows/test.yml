@@ -12,7 +12,10 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Decode fullchain
-      run: echo ${{ secrets.FULLCHAIN }} | base64 -d  > fullchain.pem
-    - name: Out fullchain
+    - name: base64-to-file
+      uses: timheuer/base64-to-file@v1.0.3
+       with:
+        fileName: 'fullchain.pem'
+        encodedString: ${{ secrets.FULLCHAIN }}
+    - name: cat file
       run: cat fullchain.pem
