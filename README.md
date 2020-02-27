@@ -8,3 +8,4 @@ Technologies stack: Java 1.8, Servlets, MariaDB, JDBC, Javascript, CSS, HTML
 55d38249-0dd7-46c1-9084-c703ec6eb400
 4a1afc14-c5b8-4c93-8f13-7928d5ae37c9
 4773d71a-adac-4eb8-b449-e1d666fcd5a3
+c827259c-e760-4a18-98b4-97ddc5c7d992

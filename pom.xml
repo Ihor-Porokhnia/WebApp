@@ -114,8 +114,25 @@
                 </configuration>
             </plugin>
 
+<plugin>
+   <groupId>com.pvsstudio</groupId>
+      <artifactId>pvsstudio-maven-plugin</artifactId>
+      <version>7.06.37052</version>
+      <configuration>
+        <analyzer>
+          <outputType>text</outputType>
+          <outputFile>path/to/output.txt</outputFile>
+        </analyzer>
+      </configuration>
+</plugin>
+
         </plugins>
     </build>
-
+<pluginRepositories>
+  <pluginRepository>
+    <id>pvsstudio-maven-repo</id>
+    <url>http://files.viva64.com/java/pvsstudio-maven-repository/</url>
+  </pluginRepository>
+</pluginRepositories>
 
 </project>
